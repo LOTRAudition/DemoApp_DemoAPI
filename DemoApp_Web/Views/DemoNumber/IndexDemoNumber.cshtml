@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DemoApp_Web.Models.Dto.DemoNumberDTO>
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+			<h1 class="text-primary">Demo Number List</h1>
+        </div>
+        <div class="col text-end pt-1">
+			<a asp-controller="DemoNumber" asp-action="CreateDemoNumber" class="btn btn-outline-primary"><i class="bi bi-plus-square-fill"></i> Create New Demo Number</a>
+        </div>
+    </div>
+
+    <table class="table">
+		<thead>
+			<tr>
+				<th>
+					Demo Name
+				</th>
+				<th>
+					Demo Number
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var item in Model){
+				<tr>
+					<td>@item.Demo.Name</td>
+					<td>@item.DemoNo</td>
+					<td>
+						<a asp-controller="DemoNumber" asp-action="UpdateDemoNumber" asp-route-demoNo="@item.DemoNo" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+						<a asp-controller="DemoNumber" asp-action="DeleteDemoNumber" asp-route-demoNo="@item.DemoNo" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+    </table>
+
+</div>
